@@ -22,12 +22,24 @@ class Camera:
 
     def center_on( self, body ):
         self.center_body = body
+    def uncenter( self ):
+        self.center_body = ''
+        self.rotate_around_body = ''
 
     def rotate_around( self, body ):
         self.rotate_around_body = body
         sx, sy = self.rotate_around_body.get_pos()
         x,y = self.center_pos
         self.start_ang = atan2( sx-x, sy-y )
+
+
+    def move( self, rel_pos ):
+        self.uncenter()
+        self.center_pos[0] += rel_pos[0]* self.zoom
+        self.center_pos[1] += rel_pos[1]* self.zoom
+        print(self.center_pos)
+
+
 
     def zoom_in( self, amount ):
         self.zoom /= amount

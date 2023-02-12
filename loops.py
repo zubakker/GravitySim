@@ -23,7 +23,14 @@ def moving_zooming( event, camera, body_list, screen ):
         if event.button == 5: # scroll down 
             camera.zoom_out( 1.03 )
     if event.type == pygame.KEYDOWN:
-        '...'
+        if event.key == pygame.K_LEFT:
+            camera.move( (-0.1, 0) )
+        if event.key == pygame.K_RIGHT:
+            camera.move( (0.1, 0) )
+        if event.key == pygame.K_UP:
+            camera.move( (0, -0.1) )
+        if event.key == pygame.K_DOWN:
+            camera.move( (0, 0.1) )
 
 
 def main_loop( screen, body_list, camera ):
