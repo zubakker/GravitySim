@@ -51,4 +51,30 @@ def get_body( camera, body_list, screen_coords ):
             return body
     return ""
 
+def calc_mass_center( body_list ):
+    xs = 0
+    ys = 0
+    ms = 0
+
+    for body in body_list:
+        x, y = body.get_pos()
+        m = body.get_mass()
+        xs += x*m
+        ys += y*m
+        ms += m
+    x = xs / ms
+    y = ys / ms
+    return [x, y]
+
+    
+
+
+
+
+
+
+
+
+
+
 
